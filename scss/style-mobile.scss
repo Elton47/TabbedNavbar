@@ -1,0 +1,22 @@
+@import "common.scss";
+@media (max-width: 720px) {
+    body {
+        > main {
+            > .navbar-menu {
+                flex-direction: column;
+                > div {
+                    transition: transform .5s cubic-bezier(.77, .2, .25, 1), background .3s ease;
+                }
+            }
+            > .navbar-menu-closed {
+                transform: translate(0);
+                > div:nth-child(odd) {
+                    transform: translateX(-100%);
+                }
+                > div:nth-child(even) {
+                    transform: translateX(100%);
+                }
+            }
+        }
+    }
+}

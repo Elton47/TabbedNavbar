@@ -1,25 +1,25 @@
-@import "common.scss";
+@import "style-mobile.scss";
 header {
     background-color: $dark-primary-color;
     height: $header-height;
     color: $text;
     z-index: 999;
-    nav {
+    > nav {
         display: flex;
         height: inherit;
         box-shadow: $shadow-1px;
-        .menu-icon-div, .user-icon-div {
+        > .menu-icon-div, .user-icon-div {
             display: inherit;
             margin: 0 2em;
             icon {
                 margin: auto;
             }
-            div {
+            > div {
                 display: inline-flex;
-                icon:first-child {
+                > icon:first-child {
                     font-size: 2em;
                 }
-                icon:last-child {
+                > icon:last-child {
                     font-size: 1.1em;
                     line-height: 0;
                 }
@@ -31,21 +31,19 @@ main {
     z-index: 1;
     margin-top: -$header-height;
     padding-top: $header-height;
-    .navbar-menu {
+    > .navbar-menu {
         position: absolute;
         width: 100%;
         display: flex;
-        height: $header-height;
-        transition: transform .5s cubic-bezier(.77, .2, .25, 1);
-        transform: translateX(0);
         z-index: 450;
-        div {
+        > div {
             background-color: lighten($divider-color, 22);
             width: 100%;
+            height: $header-height;
             display: grid;
             color: $secondary-text;
             box-shadow: $shadow-1px;
-            transition: .3s ease;
+            transition: transform .5s cubic-bezier(.77, .2, .25, 1), background .3s ease;
             cursor: pointer;
             @extend .ripple;
             &:hover {
@@ -60,13 +58,22 @@ main {
             }
         }
     }
-    .navbar-menu-closed {
-        transform: translateY(-100%);
+    > .navbar-menu-closed {
+        > div:first-child {
+            transform: translateX(-105%);
+        }
+        > div:last-child {
+            transform: translateX(105%);
+        }
+        > div {
+            transform: translateY(-105%);
+        }
     }
-    .main-wrapper {
-        .main-content {
+    > .main-wrapper {
+        overflow: scroll;
+        > .main-content {
             height: calc(100% - 48px);
-            .fab {
+            > .fab {
                 display: grid;
                 position: absolute;
                 right: 3em;
@@ -87,17 +94,17 @@ main {
                     margin: auto;
                 }
             }
-            .fab-close {
+            > .fab-close {
                 background-color: $danger-color;
             }
         }
-        footer {
+        > footer {
             height: $footer-height;
             background-color: lighten($divider-color, 20);
             display: inline-flex;
             z-index: 1;
         }
-        .dialog {
+        > .dialog {
             min-width: 400px;
             min-height: 200px;
             background-color: white;
@@ -110,15 +117,15 @@ main {
                 box-shadow: $fab-shadow-raised;
             }
         }
-        .dialog-shown {
+        > .dialog-shown {
             display: inherit !important;
         }
-        div:last-child {
+        > div:last-child {
             background-color: rgba(0, 0, 0, .5);
             transition: opacity .3s ease;
             opacity: 0;
         }
-        .tint {
+        > .tint {
             height: 100%;
             opacity: 1 !important;
             z-index: 451;
