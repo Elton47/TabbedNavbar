@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="css/style.css" />
+        <script type="text/javascript" src="js/javascript.js"></script>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="menu-icon-div">
+                    <icon onclick="toggleNavbarMenu(this);">menu</icon>
+                </div>
+                <div class="user-icon-div absolute position-right full-height">
+                    <div>
+                        <icon onclick="this.parentElement.children[1].classList.toggle('icon-rotatedX-180deg');">account_circle</icon>
+                        <icon onclick="this.classList.toggle('icon-rotatedX-180deg');">arrow_drop_down</icon>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div class="navbar-menu navbar-menu-closed">
+                <div>
+                    <p>
+                        <icon>business</icon>
+                        Company
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <icon>people</icon>
+                        Staff
+                    </p>
+                </div>
+                <div onclick="document.querySelector('.main-wrapper > div:last-child').classList.toggle('tint'); document.querySelector('.dialog').classList.add('dialog-shown');">
+                    <p>
+                        <icon>info</icon>
+                        About
+                    </p>
+                </div>
+            </div>
+            <div class="full-width full-height main-wrapper">
+                <div class="main-content absolute position-all">
+                    <iframe src="" class="no-border full-width full-height"></iframe>
+                    <div class="fab ripple" onclick="this.classList.toggle('fab-close'); this.children[0].classList.toggle('icon-rotated-135deg');">
+                        <icon class="white-text">add</icon>
+                    </div>
+                </div>
+                <footer class="absolute position-bottom full-width">
+                    <div class="center-text full-height quarter-width">
+                        Footer Content
+                        <br />
+                        &copy; Copyright - 2018
+                    </div>
+                    <div class="center-text full-height quarter-width absolute position-right">
+                        Links
+                        <ul class="text-indent-1em no-ul-bullets">
+                            <li>Link1</li>
+                        </ul>
+                    </div>
+                </footer>
+                <div class="dialog fixed center"></div>
+                <div onclick="if(this.classList.contains('tint')) { this.classList.remove('tint'); document.querySelector('.dialog').classList.remove('dialog-shown');}"></div>
+            </div>
+        </main>
+    </body>
+</html>

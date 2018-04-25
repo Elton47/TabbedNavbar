@@ -1,0 +1,127 @@
+@import "common.scss";
+header {
+    background-color: $dark-primary-color;
+    height: $header-height;
+    color: $text;
+    z-index: 999;
+    nav {
+        display: flex;
+        height: inherit;
+        box-shadow: $shadow-1px;
+        .menu-icon-div, .user-icon-div {
+            display: inherit;
+            margin: 0 2em;
+            icon {
+                margin: auto;
+            }
+            div {
+                display: inline-flex;
+                icon:first-child {
+                    font-size: 2em;
+                }
+                icon:last-child {
+                    font-size: 1.1em;
+                    line-height: 0;
+                }
+            }
+        }
+    }
+}
+main {
+    z-index: 1;
+    margin-top: -$header-height;
+    padding-top: $header-height;
+    .navbar-menu {
+        position: absolute;
+        width: 100%;
+        display: flex;
+        height: $header-height;
+        transition: transform .5s cubic-bezier(.77, .2, .25, 1);
+        transform: translateX(0);
+        z-index: 450;
+        div {
+            background-color: lighten($divider-color, 22);
+            width: 100%;
+            display: grid;
+            color: $secondary-text;
+            box-shadow: $shadow-1px;
+            transition: .3s ease;
+            cursor: pointer;
+            @extend .ripple;
+            &:hover {
+                background-color: lighten($divider-color, 20);
+            }
+            > * {
+                margin: auto;
+                display: grid;
+                icon {
+                    margin: auto;
+                }
+            }
+        }
+    }
+    .navbar-menu-closed {
+        transform: translateY(-100%);
+    }
+    .main-wrapper {
+        .main-content {
+            height: calc(100% - 48px);
+            .fab {
+                display: grid;
+                position: absolute;
+                right: 3em;
+                bottom: 3em;
+                width: 4em;
+                height: 4em;
+                background-color: $accent-color;
+                border-radius: 50%;
+                box-shadow: $fab-shadow-normal;
+                cursor: pointer;
+                transition: .2s ease;
+                z-index: 400;
+                &:hover {
+                    box-shadow: $fab-shadow-raised;
+                    transform: scale(1.025);
+                }
+                icon {
+                    margin: auto;
+                }
+            }
+            .fab-close {
+                background-color: $danger-color;
+            }
+        }
+        footer {
+            height: $footer-height;
+            background-color: lighten($divider-color, 20);
+            display: inline-flex;
+            z-index: 1;
+        }
+        .dialog {
+            min-width: 400px;
+            min-height: 200px;
+            background-color: white;
+            border-radius: 2px;
+            box-shadow: $fab-shadow-normal;
+            transition: box-shadow .3s ease;
+            display: none;
+            z-index: 499;
+            &:hover {
+                box-shadow: $fab-shadow-raised;
+            }
+        }
+        .dialog-shown {
+            display: inherit !important;
+        }
+        div:last-child {
+            background-color: rgba(0, 0, 0, .5);
+            transition: opacity .3s ease;
+            opacity: 0;
+        }
+        .tint {
+            height: 100%;
+            opacity: 1 !important;
+            z-index: 451;
+        }
+    }
+}
